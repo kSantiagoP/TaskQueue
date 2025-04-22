@@ -1,24 +1,17 @@
 package router
 
 import (
-	"log"
-	"os"
-
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	"github.com/kSantiagoP/TaskQueue/config"
 )
 
 func Initialize() {
+	logger := config.GetLogger("router")
 
-	err := godotenv.Load(".env")
+	port, err := config.GetPort()
 	if err != nil {
-		log.Fatalf("Error loading .env file: %s", err)
-	}
-	port := ":"
-	port += os.Getenv("SERVER_PORT")
-
-	if port == "" {
-		log.Fatal("Error retrieving .env")
+		logger.Errorf("error retrieving port %v", err)
+		return
 	}
 
 	router := gin.Default()
