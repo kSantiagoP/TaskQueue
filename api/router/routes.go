@@ -15,7 +15,7 @@ func initializeRoutes(router *gin.Engine) {
 	{
 		v1.GET("/ping", handler.PlaceHolderHandler)
 		v1.GET("/task", handler.PlaceHolderHandler)
-		v1.POST("/task", handler.PlaceHolderHandler)
+		v1.POST("/task", handler.CreateTaskHandler)
 		v1.GET("/tasks", handler.PlaceHolderHandler)
 		v1.PUT("/task/cancel", handler.PlaceHolderHandler)
 	}
