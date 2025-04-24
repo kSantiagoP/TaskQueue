@@ -14,8 +14,8 @@ func CreateTaskHandler(c *gin.Context) {
 
 	task := schemas.Task{
 		Type:        request.Type,
-		Status:      request.Status,
-		Error:       request.Error,
+		Status:      "pending",
+		Error:       "",
 		ElapsedTime: request.ElapsedTime,
 	}
 
@@ -26,11 +26,4 @@ func CreateTaskHandler(c *gin.Context) {
 	}
 
 	sendSuccess(c, "createTask", task)
-}
-
-type CreateTaskRequest struct {
-	Type        string `json:"type"`
-	Status      string `json:"status"`
-	Error       string `json:"error"`
-	ElapsedTime int64  `json:"elapsedTime"`
 }
